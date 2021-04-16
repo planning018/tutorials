@@ -11,6 +11,8 @@
     <modules>
         <module>spring-aop</module>
         <module>parent-springboot2</module>
+        <module>guava-modules</module>
+        <module>parent-java</module>
     </modules>
 
     <dependencies>
