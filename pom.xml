@@ -13,6 +13,8 @@
         <module>parent-springboot2</module>
         <module>guava-modules</module>
         <module>parent-java</module>
+        <module>parent-spring-5</module>
+        <module>spring-core</module>
     </modules>
 
     <dependencies>
