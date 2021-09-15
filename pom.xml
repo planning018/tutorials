@@ -17,6 +17,7 @@
         <module>spring-core</module>
         <module>apache-libraries</module>
         <module>persistence-modules</module>
+        <module>spring-cloud</module>
     </modules>
 
     <dependencies>
