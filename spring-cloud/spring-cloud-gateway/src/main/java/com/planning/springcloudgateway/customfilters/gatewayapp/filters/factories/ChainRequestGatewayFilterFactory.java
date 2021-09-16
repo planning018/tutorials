@@ -2,8 +2,10 @@ package com.planning.springcloudgateway.customfilters.gatewayapp.filters.factori
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -16,15 +18,13 @@ import java.util.stream.Collectors;
  * @author yxc
  * @date 2021/9/15 6:32 下午
  */
+@Component
 public class ChainRequestGatewayFilterFactory extends AbstractGatewayFilterFactory<ChainRequestGatewayFilterFactory.Config> {
 
     final Logger logger = LoggerFactory.getLogger(ChainRequestGatewayFilterFactory.class);
 
-    private final WebClient client;
-
-    public ChainRequestGatewayFilterFactory(WebClient client) {
+    public ChainRequestGatewayFilterFactory() {
         super(Config.class);
-        this.client = client;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ChainRequestGatewayFilterFactory extends AbstractGatewayFilterFacto
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
-            return client.get()
+            return WebClient.create().get()
                     .uri(config.getLanguageServiceEndpoint())
                     .exchange()
                     .flatMap(response -> {

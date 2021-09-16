@@ -21,11 +21,11 @@ public class FirstPreLastPostGlobalFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         // 执行前置过滤
-        logger.info("Global Pre Filter executed");
+        logger.info("First Pre Global Filter executed");
         return chain.filter(exchange)
                 .then(Mono.fromRunnable(() -> {
                     // 执行后置过滤
-                    logger.info("Global Post Filter executed");
+                    logger.info("Last Post Global Filter executed");
                 }));
     }
 

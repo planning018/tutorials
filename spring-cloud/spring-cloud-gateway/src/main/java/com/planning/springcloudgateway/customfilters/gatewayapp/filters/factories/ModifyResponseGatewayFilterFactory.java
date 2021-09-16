@@ -32,7 +32,7 @@ public class ModifyResponseGatewayFilterFactory extends AbstractGatewayFilterFac
 
                         Optional.ofNullable(exchange.getRequest()
                                 .getQueryParams()
-                                .getFirst("Locale"))
+                                .getFirst("locale"))
                             .ifPresent(qp -> {
                                 String responseContentLanguage = response.getHeaders().getContentLanguage().getLanguage();
 
