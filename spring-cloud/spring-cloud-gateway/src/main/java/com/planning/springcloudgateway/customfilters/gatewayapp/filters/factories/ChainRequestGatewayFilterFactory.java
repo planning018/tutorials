@@ -23,8 +23,15 @@ public class ChainRequestGatewayFilterFactory extends AbstractGatewayFilterFacto
 
     final Logger logger = LoggerFactory.getLogger(ChainRequestGatewayFilterFactory.class);
 
-    public ChainRequestGatewayFilterFactory() {
+    private final WebClient client;
+
+    /**
+     * 构造器注入 client
+     * @param client client
+     */
+    public ChainRequestGatewayFilterFactory(WebClient client) {
         super(Config.class);
+        this.client = client;
     }
 
     @Override
@@ -35,7 +42,7 @@ public class ChainRequestGatewayFilterFactory extends AbstractGatewayFilterFacto
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
-            return WebClient.create().get()
+            return client.get()
                     .uri(config.getLanguageServiceEndpoint())
                     .exchange()
                     .flatMap(response -> {
