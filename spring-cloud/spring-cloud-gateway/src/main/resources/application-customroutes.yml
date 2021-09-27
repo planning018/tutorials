@@ -6,7 +6,7 @@ spring:
           uri: https://httpbin.org
           predicates:
             - Path=/api/**
-            - GoldenCustomer=true
+            - GoldenCustomer=true,customerId
           filters:
             - StripPrefix=1
             - AddRequestHeader=Golden-Customer,true
