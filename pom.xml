@@ -19,6 +19,7 @@
         <module>persistence-modules</module>
         <module>spring-cloud</module>
         <module>kubernetes</module>
+        <module>libraries-http</module>
     </modules>
 
     <dependencies>
