@@ -20,6 +20,8 @@
         <module>spring-cloud</module>
         <module>kubernetes</module>
         <module>libraries-http</module>
+        <module>predict-model</module>
+        <module>my-tools</module>
     </modules>
 
     <dependencies>
