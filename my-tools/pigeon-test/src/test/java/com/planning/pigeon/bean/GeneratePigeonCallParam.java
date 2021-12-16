@@ -17,8 +17,13 @@ public class GeneratePigeonCallParam {
 
     static ObjectMapper mapper = new ObjectMapper();
 
-    public String serializeObject(Object obj) throws Exception {
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+    public String serializeObject(Object obj) {
+        try {
+            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     @Test
@@ -29,6 +34,68 @@ public class GeneratePigeonCallParam {
 
         // 根据 ObjectMapper 生产对应的 String 参数
         String requestBody = serializeObject(listStr);
+        System.out.println(requestBody);
+    }
+
+    @Test
+    public void testGenerateGtrLgbParam() {
+        List<Double[]> doubleList = new ArrayList<>();
+        Double[] doubles = new Double[]{
+                5.0,
+                4.2,
+                0.0,
+                0.0,
+                0.0,
+                4.2,
+                0.0,
+                0.0,
+                438000.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                2.0,
+                0.0,
+                8.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                330700.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                29.103773,
+                172.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+        };
+        doubleList.add(doubles);
+
+        // 根据 ObjectMapper 生产对应的 String 参数
+        String requestBody = serializeObject(doubleList);
         System.out.println(requestBody);
     }
 }
