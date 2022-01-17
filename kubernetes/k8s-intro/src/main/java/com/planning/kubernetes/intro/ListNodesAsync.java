@@ -30,7 +30,8 @@ public class ListNodesAsync {
 
         // Start async call
         CompletableFuture<V1NodeList> p = AsyncHelper.doAsync(api,(capi,cb) ->
-                capi.listNodeAsync(null, null, null, null, null, null, null, null, 10, false, cb)
+                capi.listNodeAsync(null, null, null, null, null, null,
+                        null, null, 10, false, cb)
         );
 
         p.thenAcceptAsync((nodeList) -> {
