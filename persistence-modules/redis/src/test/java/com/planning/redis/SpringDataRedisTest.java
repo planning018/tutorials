@@ -21,7 +21,7 @@ import java.util.ArrayList;
  **/
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Test01 {
+public class SpringDataRedisTest {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;

@@ -17,15 +17,28 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <netty.version>4.1.20.Final</netty.version>
     </properties>
 
     <modules>
         <module>core-java-concurrency-basic</module>
         <module>core-java-concurrency-advanced</module>
+        <module>core-java-io</module>
+        <module>core-java-collections</module>
     </modules>
 
     <dependencies>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>com.planning</groupId>
+            <artifactId>run-faster</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
