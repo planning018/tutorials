@@ -3,6 +3,9 @@ package com.planning.collections.origin;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +30,33 @@ public class ArrayListAnalyze {
         strList.add("truth");
 
         System.out.println(JSON.toJSONString(strList));
+    }
+
+    @Test
+    public void testGrow(){
+        System.out.println( 6 + (6 >> 1));
+    }
+
+    @Test
+    public void testWriteObject(){
+        ArrayList<String> namesList = new ArrayList<String>();
+
+        namesList.add("alex");
+        namesList.add("brian");
+        namesList.add("charles");
+
+        try
+        {
+            FileOutputStream fos = new FileOutputStream("listData");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(namesList);
+            oos.close();
+            fos.close();
+        }
+        catch (IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
     }
 
     /**
