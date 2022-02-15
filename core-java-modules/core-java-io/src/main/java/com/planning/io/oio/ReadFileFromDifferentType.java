@@ -32,7 +32,7 @@ public class ReadFileFromDifferentType {
     public static void readFileOnline() throws Exception {
         // 使用 apache commons 工具类
         File destFile = new File("model.pmml");
-        URL url = new URL("http://dev-predict.amh-group.com/predict-fs/v2/file/download/predict-phantom/realtime-losingorder-xgb/v20220111.0/model.pmml");
+        URL url = new URL("test-url");
         FileUtils.copyURLToFile(url, destFile);
 
         List<String> stringList = new BufferedReader(new InputStreamReader(new FileInputStream(destFile))).lines().collect(Collectors.toList());
