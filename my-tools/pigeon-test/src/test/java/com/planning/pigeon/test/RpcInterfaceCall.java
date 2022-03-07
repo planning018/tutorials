@@ -21,7 +21,7 @@ public class RpcInterfaceCall {
 /*    @Test
     public void test() throws Exception {
         Object response = this.proxyInvoke(
-                "http://service.ymm.com/predict-service/enquiry_rec_model",
+                "http://service.abc.com/predict-service/enquiry_rec_model",
                 "getModelName",
                 null,
                 null,

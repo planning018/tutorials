@@ -11,6 +11,6 @@ public class GoldenCustomerService {
 
     public boolean isGoldenCustomer(String customerId){
         // mock ; 可以调用 RPC 接口查询
-        return "ymm".equalsIgnoreCase(customerId);
+        return "ymm123".equalsIgnoreCase(customerId);
     }
 }

@@ -262,7 +262,7 @@ public class MyUnitTest {
 
         Map<String, Object> extData = new HashMap<>();
         extData.put("startCity", "杭州");
-        extData.put("platformFrom", "YMM");
+        extData.put("platformFrom", "ABC");
         extData.put("cargoId", 1313131L);
 
         map.put("extData", extData);

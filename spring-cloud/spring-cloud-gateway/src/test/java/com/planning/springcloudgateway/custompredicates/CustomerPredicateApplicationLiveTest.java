@@ -45,7 +45,7 @@ public class CustomerPredicateApplicationLiveTest {
         String url = "http://localhost:" + serverPort + "/api/headers";
         RequestEntity<Void> request = RequestEntity
                 .get(URI.create(url))
-                .header("Cookie","customerId=ymm")
+                .header("Cookie","customerId=ymm123")
                 .build();
 
         ResponseEntity<String> response = restTemplate.exchange(request, String.class);
