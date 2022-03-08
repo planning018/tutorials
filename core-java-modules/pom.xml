@@ -25,6 +25,7 @@
         <module>core-java-concurrency-advanced</module>
         <module>core-java-io</module>
         <module>core-java-collections</module>
+        <module>core-java-jvm</module>
     </modules>
 
     <dependencies>
