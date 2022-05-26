@@ -24,6 +24,7 @@
         <module>core-java-modules</module>
         <module>spring-quartz</module>
         <module>spring-schedule</module>
+        <module>grpc</module>
     </modules>
 
     <dependencies>
