@@ -10,6 +10,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
+import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
@@ -69,7 +70,7 @@ public class EchoClient {
                             if (scanner.hasNext()) {
                                 SocketChannel socketChannel = (SocketChannel) sk.channel();
                                 String next = scanner.next();
-                                buffer.put((LocalDateTools.getNow() + " >> " + next).getBytes());
+                                buffer.put((LocalDateTime.now()+ " >> " + next).getBytes());
                                 buffer.flip();
                                 // 操作三：通过DatagramChannel数据报通道发送数据
                                 socketChannel.write(buffer);

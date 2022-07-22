@@ -14,7 +14,13 @@ import java.util.Date;
  */
 public class LocalDateTools {
 
-    public static void main(String[] args) {
+    /**
+     * 获取指定时间
+     *      1. 获取当前时间（毫秒）
+     *      2. 当天的 0点 - 24点（秒）
+     *      3. 当天的 0点 - 24点（毫秒）
+     */
+    public void fetchTargetTime(){
         // 获取当前时间（毫秒）
         System.out.println(LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli());
         System.out.println(LocalDateTime.of(LocalDate.now(), LocalTime.MAX).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
@@ -26,20 +32,58 @@ public class LocalDateTools {
         // 当天的 0点 - 24点（毫秒）
         System.out.println(new Date(LocalDateTime.of(LocalDate.now(), LocalTime.MAX).toInstant(ZoneOffset.of("+8")).toEpochMilli()));
         System.out.println(new Date(LocalDateTime.of(LocalDate.now(), LocalTime.MAX).toEpochSecond(ZoneOffset.of("+8")) * 1000));
+    }
 
-        // 格式化时间
-        System.out.println(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    /**
+     * 时间格式化
+     */
+    public void formatTime(){
+        // 当前时间格式化
+        String formatDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
+    }
+
+    /**
+     * 往前/往后 操作时间
+     */
+    public void plusOrMinusDateTime(){
         // 当前时间往前推 5 分钟
         System.out.println(LocalDateTime.now().minusMinutes(5).toInstant(ZoneOffset.of("+8")).toEpochMilli());
     }
 
+    /**
+     *
+     */
+    public void convertDateAndLocalDate(){
+        Date date = new Date();
+        // convert date to LocalDate
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        // convert ToLocalDate via millisecond
+        Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+        // convert To LocalDate Via SqlDate1
+        new java.sql.Date(date.getTime()).toLocalDate();
 
-    public static String getNow() {
-        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        // convert date to localDateTime
+        LocalDateTime localDateTime = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        // convert To LocalDateTime Via Milisecond
+        Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime();
+        // convert To LocalDateTime Via SqlDate2
+        new java.sql.Timestamp(date.getTime()).toLocalDateTime();
+
+        // convert LocalDate To Date
+        java.util.Date date1 = java.sql.Date.valueOf(localDate);
+        // convertToDateViaInstant
+        java.util.Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+
+        // convertToDateViaSqlTimestamp
+        java.sql.Timestamp.valueOf(localDateTime);
+        java.util.Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
 
-    public void showLocalDate() {
+    /**
+     * LocalDate 的常见用法
+     */
+    public void showLocalDateUsage() {
         // An instance of current date
         LocalDate localDate = LocalDate.now();
 
@@ -71,7 +115,10 @@ public class LocalDateTools {
         LocalDate firstDayOfMonth = LocalDate.parse("2016-06-12").with(TemporalAdjusters.firstDayOfMonth());
     }
 
-    public void showLocalTime() {
+    /**
+     * LocalTime 的常见用法
+     */
+    public void showLocalTimeUsage() {
         // An instance of current LocalTime
         LocalTime now = LocalTime.now();
 
@@ -92,7 +139,10 @@ public class LocalDateTools {
         LocalTime maxTime = LocalTime.MAX;
     }
 
-    public void showLocalDateTime(){
+    /**
+     * LocalDateTime 的常见用法
+     */
+    public void showLocalDateTimeUsage(){
         // An instance of LocalDateTime
         LocalDateTime localDateTime = LocalDateTime.now();
 
@@ -116,55 +166,4 @@ public class LocalDateTools {
         System.out.println(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
     }
 
-    public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
-        return dateToConvert.toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate();
-    }
-
-    public LocalDate convertToLocalDateViaMilisecond(Date dateToConvert) {
-        return Instant.ofEpochMilli(dateToConvert.getTime())
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate();
-    }
-
-    public LocalDate convertToLocalDateViaSqlDate1(Date dateToConvert) {
-        return new java.sql.Date(dateToConvert.getTime()).toLocalDate();
-    }
-
-    public LocalDateTime convertToLocalDateTimeViaInstant(Date dateToConvert) {
-        return dateToConvert.toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDateTime();
-    }
-
-    public LocalDateTime convertToLocalDateTimeViaMilisecond(Date dateToConvert) {
-        return Instant.ofEpochMilli(dateToConvert.getTime())
-                .atZone(ZoneId.systemDefault())
-                .toLocalDateTime();
-    }
-
-    public LocalDateTime convertToLocalDateViaSqlDate2(Date dateToConvert) {
-        return new java.sql.Timestamp(dateToConvert.getTime()).toLocalDateTime();
-    }
-
-    public Date convertToDateViaSqlDate(LocalDate dateToConvert) {
-        return java.sql.Date.valueOf(dateToConvert);
-    }
-
-    public Date convertToDateViaInstant(LocalDate dateToConvert) {
-        return java.util.Date.from(dateToConvert.atStartOfDay()
-                .atZone(ZoneId.systemDefault())
-                .toInstant());
-    }
-
-    public Date convertToDateViaSqlTimestamp(LocalDateTime dateToConvert) {
-        return java.sql.Timestamp.valueOf(dateToConvert);
-    }
-
-    Date convertToDateViaInstant(LocalDateTime dateToConvert) {
-        return java.util.Date
-                .from(dateToConvert.atZone(ZoneId.systemDefault())
-                        .toInstant());
-    }
 }
