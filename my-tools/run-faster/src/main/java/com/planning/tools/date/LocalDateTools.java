@@ -45,9 +45,18 @@ public class LocalDateTools {
     /**
      * 时间格式化
      */
-    public void formatTime(){
+    public static void formatTime(){
         // 当前时间格式化
         String formatDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+        // 转换标准格式的指定时间
+        LocalDate specialDate = LocalDate.parse("2022-07-12");
+        System.out.println(specialDate.minusDays(2));
+
+        // 转换非标准格式的指定时间，需要设定 DateTimeFormatter
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate parse = LocalDate.parse("20220712", formatter);
+        System.out.println(parse);
 
     }
 

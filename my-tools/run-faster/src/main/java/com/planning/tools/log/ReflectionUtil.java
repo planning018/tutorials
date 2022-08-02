@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 /**
  * @author yxc
  * @date 2021/4/13 14:13
@@ -64,22 +65,17 @@ public class ReflectionUtil {
         Class superClass = targetClass.getSuperclass();
         while (null != superClass) {
             subList = Arrays.asList(superClass.getInterfaces());
-
-            if (subList.size() > 0)
+            if (subList.size() > 0){
                 interfaceSet.addAll(subList);
-
+            }
             superClass = superClass.getSuperclass();
         }
         //set 转成 数组
         return interfaceSet.toArray(new Class<?>[0]);
-
     }
 
     public static Object newProxyInstance(Object targetObject, InvocationHandler handler) {
-
-
         Class targetClass = targetObject.getClass();
-
         ClassLoader loader = targetClass.getClassLoader();
 
         //被代理类实现的接口

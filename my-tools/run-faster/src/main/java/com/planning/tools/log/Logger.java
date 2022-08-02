@@ -1,6 +1,8 @@
 package com.planning.tools.log;
 
 /**
+ * 从 Java 高并发实战 书中复制过来的一个小工具类
+ *
  * @author yxc
  * @date 2021/4/13 14:12
  */

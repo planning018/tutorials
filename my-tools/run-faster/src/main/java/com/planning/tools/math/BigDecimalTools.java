@@ -10,11 +10,13 @@ import java.math.RoundingMode;
 public class BigDecimalTools {
 
     public static void main(String[] args) {
-        // descMathPrecision();
-
+        descMathPrecision();
         calculateBasicOpt();
     }
 
+    /**
+     * BigDecimal 精度问题
+     */
     private static void descMathPrecision() {
         Double right = 8.2;
         // 存在精度问题
@@ -28,6 +30,10 @@ public class BigDecimalTools {
         System.out.println(Math.floorDiv(1L, 3L));
     }
 
+    /**
+     * BigDecimal 相除
+     *      - 四舍五入
+     */
     private static void calculateBasicOpt(){
         BigDecimal num1 = new BigDecimal(3);
         BigDecimal num2 = new BigDecimal(7);
