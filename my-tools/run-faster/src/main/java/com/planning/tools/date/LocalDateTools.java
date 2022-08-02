@@ -20,7 +20,7 @@ public class LocalDateTools {
      *      2. 当天的 0点 - 24点（秒）
      *      3. 当天的 0点 - 24点（毫秒）
      */
-    public void fetchTargetTime(){
+    public static void fetchTargetTime(){
         // 获取当前时间（毫秒）
         System.out.println(LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli());
         System.out.println(LocalDateTime.of(LocalDate.now(), LocalTime.MAX).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
@@ -32,6 +32,14 @@ public class LocalDateTools {
         // 当天的 0点 - 24点（毫秒）
         System.out.println(new Date(LocalDateTime.of(LocalDate.now(), LocalTime.MAX).toInstant(ZoneOffset.of("+8")).toEpochMilli()));
         System.out.println(new Date(LocalDateTime.of(LocalDate.now(), LocalTime.MAX).toEpochSecond(ZoneOffset.of("+8")) * 1000));
+
+        // 当前时间的小时 开始点-结束点
+        System.out.println(LocalDateTime.now().truncatedTo(ChronoUnit.HOURS));
+        System.out.println(LocalDateTime.now().plusHours(1).truncatedTo(ChronoUnit.HOURS));
+    }
+
+    public static void main(String[] args) {
+        fetchTargetTime();
     }
 
     /**
@@ -52,30 +60,30 @@ public class LocalDateTools {
     }
 
     /**
-     *
+     *  Date 和 LocalDate、LocalDateTime 之间的相互转换
      */
     public void convertDateAndLocalDate(){
         Date date = new Date();
         // convert date to LocalDate
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        // convert ToLocalDate via millisecond
+        // convert date ToLocalDate via millisecond
         Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
-        // convert To LocalDate Via SqlDate1
+        // convert date To LocalDate Via SqlDate
         new java.sql.Date(date.getTime()).toLocalDate();
 
-        // convert date to localDateTime
+        // convert Date to localDateTime
         LocalDateTime localDateTime = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        // convert To LocalDateTime Via Milisecond
+        // convert Date To LocalDateTime via millisecond
         Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime();
-        // convert To LocalDateTime Via SqlDate2
+        // convert Date To LocalDateTime via sqlDate
         new java.sql.Timestamp(date.getTime()).toLocalDateTime();
 
         // convert LocalDate To Date
         java.util.Date date1 = java.sql.Date.valueOf(localDate);
-        // convertToDateViaInstant
+        // convert LocalDate To Date Via Instant
         java.util.Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 
-        // convertToDateViaSqlTimestamp
+        // convert LocalDateTime To Date Via Sql Timestamp
         java.sql.Timestamp.valueOf(localDateTime);
         java.util.Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
