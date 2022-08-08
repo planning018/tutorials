@@ -9,12 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>spring-aop</module>
-        <module>parent-springboot2</module>
         <module>guava-modules</module>
-        <module>parent-java</module>
-        <module>parent-spring-5</module>
-        <module>spring-core</module>
         <module>apache-libraries</module>
         <module>persistence-modules</module>
         <module>spring-cloud</module>
@@ -22,10 +17,9 @@
         <module>libraries-http</module>
         <module>my-tools</module>
         <module>core-java-modules</module>
-        <module>spring-quartz</module>
-        <module>spring-schedule</module>
         <module>grpc</module>
         <module>spring-boot-modules</module>
+        <module>spring-msic</module>
     </modules>
 
     <dependencies>

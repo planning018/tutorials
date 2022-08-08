@@ -6,7 +6,7 @@
         <artifactId>parent-java</artifactId>
         <groupId>com.planning</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-java</relativePath>
+        <relativePath>../parent/parent-java</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
