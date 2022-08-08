@@ -21,9 +21,15 @@ public class ScheduleJobController {
     @Autowired
     private ScheduleJobService scheduleJobService;
 
-    @PostMapping("/job")
+    @PostMapping("/setup/job")
     public Boolean createScheduleJob(@RequestBody ScheduleJobRequest request){
         scheduleJobService.createScheduleJob(request.getJobName(), request.getJobGroup());
+        return true;
+    }
+
+    @PostMapping("/cancel/job")
+    public Boolean cancelScheduleJob(@RequestBody ScheduleJobRequest request){
+        scheduleJobService.cancelScheduleJob(request.getJobName(), request.getJobGroup());
         return true;
     }
 }

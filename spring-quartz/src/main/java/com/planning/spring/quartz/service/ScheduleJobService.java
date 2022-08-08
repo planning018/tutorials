@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
+import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.Trigger;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.Date;
 
 /**
@@ -26,10 +28,18 @@ public class ScheduleJobService {
     @Autowired
     private SchedulerFactoryBean schedulerFactoryBean;
 
-    public void createScheduleJob(String jobName, String jobGroup) {
-//        String jobName = "planning-quartz-demo";
-//        String jobGroup = "planning-group";
+    @PostConstruct
+    public void setUpJob() {
+        this.createScheduleJob("yxc_test_002", "2");
+    }
 
+    /**
+     * 设置多个任务，会发生 status = error 而导致任务不执行，暂时没有找到解决方案
+     *
+     * @param jobName
+     * @param jobGroup
+     */
+    public void createScheduleJob(String jobName, String jobGroup) {
         try {
             // 1. 获取 Scheduler
             Scheduler scheduler = schedulerFactoryBean.getScheduler();
@@ -65,5 +75,14 @@ public class ScheduleJobService {
             e.printStackTrace();
         }
 
+    }
+
+    public void cancelScheduleJob(String jobName, String jobGroup) {
+        try {
+            schedulerFactoryBean.getScheduler()
+                    .deleteJob(new JobKey(jobName, jobGroup));
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
     }
 }
