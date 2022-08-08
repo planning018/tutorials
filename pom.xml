@@ -25,6 +25,7 @@
         <module>spring-quartz</module>
         <module>spring-schedule</module>
         <module>grpc</module>
+        <module>spring-boot-modules</module>
     </modules>
 
     <dependencies>
