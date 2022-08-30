@@ -12,14 +12,13 @@
         <module>guava-modules</module>
         <module>apache-libraries</module>
         <module>persistence-modules</module>
-        <module>spring-cloud</module>
         <module>kubernetes</module>
         <module>libraries-http</module>
         <module>my-tools</module>
         <module>core-java-modules</module>
         <module>grpc</module>
         <module>spring-boot-modules</module>
-        <module>spring-msic</module>
+        <module>spring-misc</module>
     </modules>
 
     <dependencies>

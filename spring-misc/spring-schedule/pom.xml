@@ -6,7 +6,7 @@
         <artifactId>spring-msic</artifactId>
         <groupId>com.planning</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../spring-msic</relativePath>
+        <relativePath>../../spring-misc</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

@@ -12,6 +12,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 数据写入读取测试
@@ -32,7 +33,7 @@ public class SpringDataRedisTest {
     @Test
     public void testStringSetKey() {
         // StringRedisTemplate set value
-        stringRedisTemplate.opsForValue().set("yxc", "keep-learning-20200523");
+        stringRedisTemplate.opsForValue().set("yxc", "20220817", 2, TimeUnit.MINUTES);
     }
 
     @Test

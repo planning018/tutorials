@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>elasticsearch</module>
-        <module>redis</module>
     </modules>
 
     <properties>
