@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>k8s-intro</module>
+        <module>fabric8-intro</module>
     </modules>
 
     <properties>
