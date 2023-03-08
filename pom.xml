@@ -19,6 +19,8 @@
         <module>grpc</module>
         <module>spring-boot-modules</module>
         <module>spring-misc</module>
+        <module>algorithm</module>
+        <module>design-patterns</module>
     </modules>
 
     <dependencies>

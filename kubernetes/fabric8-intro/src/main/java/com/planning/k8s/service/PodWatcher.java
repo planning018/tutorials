@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * @author yxc
  * @date 2022/8/30 5:25 下午
  */
-@Slf4j
+//@Slf4j
 @Service
 public class PodWatcher implements Watcher<Pod> {
 

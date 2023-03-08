@@ -67,6 +67,9 @@ public class ScheduleJobService {
 
                 scheduler.scheduleJob(jobDetail, trigger);
 
+                // 设置一次性执行，则去除上面 trigger 的 schedule 配置
+                // scheduler.start();
+
                 log.info(">>>>> jobName = [" + jobName + "]" + " scheduled.");
             } else {
                 log.error("ScheduleJobService createScheduleJob jobName {} already exist", jobName);

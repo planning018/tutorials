@@ -16,7 +16,12 @@ public class DeploymentTest {
     private DeploymentService deploymentService;
 
     @Test
-    public void testCreate(){
-        deploymentService.createCustomDeployment();
+    public void testCreateByYaml(){
+        deploymentService.createCustomDeploymentByYaml();
+    }
+
+    @Test
+    public void testCreateByTemplate(){
+        deploymentService.createDeploymentByTemplate();
     }
 }

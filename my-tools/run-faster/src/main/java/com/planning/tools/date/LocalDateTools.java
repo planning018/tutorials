@@ -36,6 +36,9 @@ public class LocalDateTools {
         // 当前时间的小时 开始点-结束点
         System.out.println(LocalDateTime.now().truncatedTo(ChronoUnit.HOURS));
         System.out.println(LocalDateTime.now().plusHours(1).truncatedTo(ChronoUnit.HOURS));
+
+        // 设置指定时区的当前时间
+        System.out.println(LocalDateTime.now(ZoneId.of("GMT+8")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
     }
 
     public static void main(String[] args) {
